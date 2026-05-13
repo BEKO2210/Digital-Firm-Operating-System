@@ -1,14 +1,14 @@
 <!--
   This file is auto-generated from public/index.html on every session end.
   It is the Markdown mirror of the live landing page.
-  Do not edit by hand. Source of truth: public/index.html + .firm/identity.yaml + live stats.
+  Do not edit by hand. Source of truth: public/index.html template + .firm/identity.yaml + live stats.
 -->
 
-# Nordlicht Digital
+# {{firm_name}}
 
-> We build software the way it should be built.
+> {{firm_slogan}}
 
-**Est. 2026** · Firm Day **1** · Sprint **sprint-001**, Day **1/10**
+**Est. {{firm_founded_year}}** · Firm Day **{{firm_day}}** · Sprint **{{current_sprint}}**, Day **{{sprint_day}}/10**
 
 ---
 
@@ -16,15 +16,15 @@
 
 | | |
 |---|---|
-| **Active tickets** | 0 / 3 |
-| **Halted (awaiting reply)** | 0 |
-| **Current sprint** | sprint-001 · Day 1/10 |
-| **Firm day** | 1 |
-| **Production releases** | 0 · latest **—** |
-| **Last gate decision** | — |
-| **Open drift alerts** | 0 |
-| **Audit chain** | ✓ Verified (1 entry) |
-| **Page generated** | 2026-05-13T09:00:00Z |
+| **Active tickets** | {{active_tickets}} / 3 |
+| **Halted (awaiting reply)** | {{halted_tickets}} |
+| **Current sprint** | {{current_sprint}} · Day {{sprint_day}}/10 |
+| **Firm day** | {{firm_day}} |
+| **Production releases** | {{releases_count}} · latest **{{latest_version}}** |
+| **Last gate decision** | {{last_gate_verdict}} |
+| **Open drift alerts** | {{open_drift_alerts}} |
+| **Audit chain** | ✓ Verified ({{audit_seq}} entries) |
+| **Page generated** | {{last_updated_real}} |
 
 ---
 
@@ -65,8 +65,8 @@ See [.firm/employees/_roster.yaml](.firm/employees/_roster.yaml) for the full ro
 
 ```
 Executive (2)
-├── CEO (Anna Lindqvist)
-└── CTO (Marcus Chen)
+├── CEO
+└── CTO
 
 Product Management (4)
 ├── Product Owners (2)
@@ -108,8 +108,20 @@ Operations (3)
 
 ## Recent case studies
 
-_No releases yet. The firm is freshly bootstrapped._
+{{#each_case_study}}
+### {{ticket_id}} — {{title}}
 
+**Version:** {{version}} · **Delivered:** Day {{delivered_day}} · **Gates passed:** {{gates_passed_count}}/7
+
+{{summary}}
+
+**Built by:** {{built_by_names}}
+**Tags:** {{tags_csv}}
+**Audit trail:** [archive/{{ticket_id}}/](archive/{{ticket_id}}/)
+
+---
+
+{{/each_case_study}}
 
 ## How we work
 
@@ -150,12 +162,12 @@ The firm scans the inbox on every Claude Code session. When content arrives, it 
 
 ## Contact
 
-**Client:** Belkis Aslani
-**Email:** [belkis.aslani@gmail.com](mailto:belkis.aslani@gmail.com)
+**Client:** {{customer_name}}
+**Email:** [{{customer_email}}](mailto:{{customer_email}})
 
 ---
 
 <sub>
-Nordlicht Digital · Est. 2026 · Internal language: English · Customer language: de<br />
-Operating system version: 2.0.0 · Page generated 2026-05-13T09:00:00Z · Audit chain ✓ Verified (1 entry) · Drift alerts: 0
+{{firm_name}} · Est. {{firm_founded_year}} · Internal language: English · Customer language: {{customer_language}}<br />
+Operating system version: 2.0.0 · Page generated {{last_updated_real}} · Audit chain ✓ Verified · Drift alerts: {{open_drift_alerts}}
 </sub>
