@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>{{firm_name}} — {{firm_slogan}}</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  :root {
+    --ink: #0a0a0a;
+    --paper: #fafaf9;
+    --muted: #71717a;
+    --accent: #18181b;
+    --line: #e4e4e7;
+  }
+  * { font-feature-settings: "ss01","ss02"; }
+  body { font-family: ui-sans-serif, system-ui, -apple-system, "Inter", sans-serif; }
+  .mono { font-family: ui-monospace, "JetBrains Mono", "SF Mono", monospace; }
+  .hairline { border-color: var(--line); }
+  .ink { color: var(--ink); }
+  .muted { color: var(--muted); }
+  .grid-team {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .grid-team > * { background: var(--paper); }
+  .marquee {
+    display: flex;
+    overflow: hidden;
+    white-space: nowrap;
+    border-block: 1px solid var(--line);
+  }
+  .marquee-track {
+    display: flex;
+    animation: scroll 60s linear infinite;
+    gap: 4rem;
+    padding-block: 0.75rem;
+  }
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+</style>
+</head>
+<body class="bg-[var(--paper)] ink">
+
+<!-- ───────────────────── HEADER ───────────────────── -->
+<header class="border-b hairline sticky top-0 bg-[var(--paper)]/90 backdrop-blur z-50">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 bg-[var(--ink)] text-[var(--paper)] grid place-items-center text-sm mono">◆</div>
+      <span class="font-medium tracking-tight">{{firm_name}}</span>
+    </div>
+    <nav class="hidden md:flex gap-8 text-sm muted">
+      <a href="#services" class="hover:ink">Services</a>
+      <a href="#team" class="hover:ink">Team</a>
+      <a href="#work" class="hover:ink">Work</a>
+      <a href="#standards" class="hover:ink">Standards</a>
+      <a href="#contact" class="hover:ink">Contact</a>
+    </nav>
+    <a href="#contact" class="text-sm bg-[var(--ink)] text-[var(--paper)] px-4 py-2 hover:opacity-90">
+      Start a project →
+    </a>
+  </div>
+</header>
+
+<!-- ───────────────────── HERO ───────────────────── -->
+<section class="border-b hairline">
+  <div class="max-w-7xl mx-auto px-6 py-24 md:py-32">
+    <div class="text-xs mono muted mb-6">
+      EST. {{firm_founded_year}} · DAY {{firm_day}} · SPRINT {{current_sprint}}
+    </div>
+    <h1 class="text-5xl md:text-7xl font-medium tracking-tight leading-[0.95] max-w-4xl">
+      {{firm_slogan}}
+    </h1>
+    <p class="mt-8 text-lg md:text-xl muted max-w-2xl leading-relaxed">
+      A 50-person digital agency operating on hard gates, multi-pass reviews,
+      and an immutable production pipeline. We build software the way it should be built —
+      slowly, honestly, and only after three people have tried to break it.
+    </p>
+    <div class="mt-12 flex flex-wrap gap-3 text-sm">
+      <span class="border hairline px-3 py-1.5">Web</span>
+      <span class="border hairline px-3 py-1.5">Mobile</span>
+      <span class="border hairline px-3 py-1.5">Backend</span>
+      <span class="border hairline px-3 py-1.5">DevOps</span>
+      <span class="border hairline px-3 py-1.5">Security</span>
+      <span class="border hairline px-3 py-1.5">UX/UI</span>
+      <span class="border hairline px-3 py-1.5">DSGVO</span>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────────────── LIVE STATS ───────────────────── -->
+<section class="border-b hairline bg-[var(--ink)] text-[var(--paper)]">
+  <div class="max-w-7xl mx-auto px-6 py-10">
+    <div class="text-xs mono opacity-60 mb-4">LIVE — UPDATED {{last_updated_real}}</div>
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-8">
+      <div>
+        <div class="text-3xl font-medium">{{active_tickets}}/3</div>
+        <div class="text-xs opacity-60 mt-1 uppercase tracking-wider">Active</div>
+      </div>
+      <div>
+        <div class="text-3xl font-medium">{{halted_tickets}}</div>
+        <div class="text-xs opacity-60 mt-1 uppercase tracking-wider">Awaiting reply</div>
+      </div>
+      <div>
+        <div class="text-3xl font-medium">{{current_sprint}}</div>
+        <div class="text-xs opacity-60 mt-1 uppercase tracking-wider">Sprint · Day {{sprint_day}}/10</div>
+      </div>
+      <div>
+        <div class="text-3xl font-medium">{{firm_day}}</div>
+        <div class="text-xs opacity-60 mt-1 uppercase tracking-wider">Firm day</div>
+      </div>
+      <div>
+        <div class="text-3xl font-medium">{{releases_count}}</div>
+        <div class="text-xs opacity-60 mt-1 uppercase tracking-wider">Releases · {{latest_version}}</div>
+      </div>
+      <div>
+        <div class="text-3xl font-medium">{{last_gate_verdict}}</div>
+        <div class="text-xs opacity-60 mt-1 uppercase tracking-wider">Last gate</div>
+      </div>
+      <div>
+        <div class="text-3xl font-medium">{{open_drift_alerts}}</div>
+        <div class="text-xs opacity-60 mt-1 uppercase tracking-wider">Drift alerts</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────────────── MARQUEE ───────────────────── -->
+<div class="marquee mono text-xs muted">
+  <div class="marquee-track">
+    <span>HARD GATES</span><span>·</span>
+    <span>ZERO DRIFT</span><span>·</span>
+    <span>FORENSIC AUDIT</span><span>·</span>
+    <span>IMMUTABLE PRODUCTION</span><span>·</span>
+    <span>MULTI-PASS REVIEW</span><span>·</span>
+    <span>DSGVO READY</span><span>·</span>
+    <span>WCAG 2.2 AA</span><span>·</span>
+    <span>SHA-256 PINNED</span><span>·</span>
+    <span>HARD GATES</span><span>·</span>
+    <span>ZERO DRIFT</span><span>·</span>
+    <span>FORENSIC AUDIT</span><span>·</span>
+    <span>IMMUTABLE PRODUCTION</span><span>·</span>
+    <span>MULTI-PASS REVIEW</span><span>·</span>
+    <span>DSGVO READY</span><span>·</span>
+    <span>WCAG 2.2 AA</span><span>·</span>
+    <span>SHA-256 PINNED</span><span>·</span>
+  </div>
+</div>
+
+<!-- ───────────────────── SERVICES ───────────────────── -->
+<section id="services" class="border-b hairline">
+  <div class="max-w-7xl mx-auto px-6 py-24">
+    <div class="grid md:grid-cols-12 gap-12 mb-16">
+      <div class="md:col-span-4">
+        <div class="text-xs mono muted mb-3">01 — SERVICES</div>
+        <h2 class="text-3xl md:text-4xl font-medium tracking-tight">
+          What we build
+        </h2>
+      </div>
+      <p class="md:col-span-7 md:col-start-6 text-lg muted leading-relaxed">
+        Every engagement runs through the same five phases —
+        Discovery, Design, Build, Harden, Release. Every artifact passes
+        Self review, Peer review, and a Devil's Advocate pass before any gate.
+        No exceptions. No shortcuts.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-px bg-[var(--line)] border hairline">
+      <article class="bg-[var(--paper)] p-8">
+        <div class="text-xs mono muted mb-4">FRONTEND · 8 PEOPLE</div>
+        <h3 class="text-xl font-medium mb-3">Websites & Web Apps</h3>
+        <p class="muted text-sm leading-relaxed">
+          TypeScript-first. Accessibility-first. Performance budgets enforced at the gate.
+          We ship interfaces that work for everyone, in every browser, on every connection.
+        </p>
+      </article>
+      <article class="bg-[var(--paper)] p-8">
+        <div class="text-xs mono muted mb-4">BACKEND · 10 PEOPLE</div>
+        <h3 class="text-xl font-medium mb-3">APIs & Services</h3>
+        <p class="muted text-sm leading-relaxed">
+          Boring, versioned, well-documented. Idempotent where it matters,
+          observable everywhere, and reviewed by people who weren't on the keyboard.
+        </p>
+      </article>
+      <article class="bg-[var(--paper)] p-8">
+        <div class="text-xs mono muted mb-4">MOBILE · 4 PEOPLE</div>
+        <h3 class="text-xl font-medium mb-3">Apps for Phone, Tablet, TV</h3>
+        <p class="muted text-sm leading-relaxed">
+          Native or cross-platform. Offline-first patterns,
+          battery-aware behavior, and the same gate policy as the rest of the firm.
+        </p>
+      </article>
+      <article class="bg-[var(--paper)] p-8">
+        <div class="text-xs mono muted mb-4">DEVOPS / SRE · 4 PEOPLE</div>
+        <h3 class="text-xl font-medium mb-3">Infrastructure & Reliability</h3>
+        <p class="muted text-sm leading-relaxed">
+          Reproducible builds, hash-pinned releases, runbooks for every service.
+          Monitoring is shipped on day one, not "later".
+        </p>
+      </article>
+      <article class="bg-[var(--paper)] p-8">
+        <div class="text-xs mono muted mb-4">SECURITY · 2 PEOPLE</div>
+        <h3 class="text-xl font-medium mb-3">Hardening & Compliance</h3>
+        <p class="muted text-sm leading-relaxed">
+          OWASP Top 10, dependency CVE scans, threat models for non-trivial features.
+          Privacy by design — DSGVO is a baseline, not a feature.
+        </p>
+      </article>
+      <article class="bg-[var(--paper)] p-8">
+        <div class="text-xs mono muted mb-4">DESIGN · 4 PEOPLE</div>
+        <h3 class="text-xl font-medium mb-3">UX & UI</h3>
+        <p class="muted text-sm leading-relaxed">
+          Flows before screens. Tokens before pixels. Every acceptance criterion
+          verified one-to-one against the built artifact before release.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────────────── TEAM ───────────────────── -->
+<section id="team" class="border-b hairline">
+  <div class="max-w-7xl mx-auto px-6 py-24">
+    <div class="grid md:grid-cols-12 gap-12 mb-16">
+      <div class="md:col-span-4">
+        <div class="text-xs mono muted mb-3">02 — TEAM</div>
+        <h2 class="text-3xl md:text-4xl font-medium tracking-tight">
+          50 people, named.
+        </h2>
+      </div>
+      <p class="md:col-span-7 md:col-start-6 text-lg muted leading-relaxed">
+        Every employee has a name, a profile, a personal pool, and a personality
+        that evolves with the work. Reviews stay sharp because the same person
+        doesn't approve their own code. Seniors get strict after misses. Juniors
+        get bolder after wins. The firm learns.
+      </p>
+    </div>
+
+    <div class="grid-team">
+      <!-- Team cards auto-generated from .firm/employees/_roster.yaml -->
+      <!-- Repeat this block 50× at generation time: -->
+      {{#each_employee}}
+      <div class="p-5">
+        <div class="w-10 h-10 bg-[var(--ink)] text-[var(--paper)] grid place-items-center text-xs mono mb-3">
+          {{initials}}
+        </div>
+        <div class="font-medium text-sm">{{name}}</div>
+        <div class="text-xs muted mt-0.5">{{role_human}}</div>
+        <div class="text-xs muted mt-1 italic">{{department}}</div>
+      </div>
+      {{/each_employee}}
+    </div>
+
+    <div class="mt-8 text-xs mono muted">
+      ROSTER LAST UPDATED {{roster_updated_sim}} · ALL PROFILES LOADED
+    </div>
+  </div>
+</section>
+
+<!-- ───────────────────── WORK ───────────────────── -->
+<section id="work" class="border-b hairline">
+  <div class="max-w-7xl mx-auto px-6 py-24">
+    <div class="grid md:grid-cols-12 gap-12 mb-16">
+      <div class="md:col-span-4">
+        <div class="text-xs mono muted mb-3">03 — WORK</div>
+        <h2 class="text-3xl md:text-4xl font-medium tracking-tight">
+          Recent case studies
+        </h2>
+      </div>
+      <p class="md:col-span-7 md:col-start-6 text-lg muted leading-relaxed">
+        Six most recent shipped tickets, summarized. Each links to the
+        full audit trail in <code class="mono text-xs bg-[var(--line)] px-1.5 py-0.5">archive/</code> —
+        what was asked, who built it, which gates ran, and the SHA-256 of every file.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-px bg-[var(--line)] border hairline">
+      {{#each_case_study}}
+      <article class="bg-[var(--paper)] p-8">
+        <div class="flex items-baseline justify-between mb-4">
+          <div class="text-xs mono muted">{{ticket_id}}</div>
+          <div class="text-xs mono">{{version}}</div>
+        </div>
+        <h3 class="text-xl font-medium mb-2">{{title}}</h3>
+        <p class="muted text-sm leading-relaxed mb-4">{{summary}}</p>
+        <div class="flex flex-wrap gap-1.5 text-xs">
+          {{#each_tag}}<span class="border hairline px-2 py-0.5">{{tag}}</span>{{/each_tag}}
+        </div>
+        <div class="text-xs mono muted mt-4">
+          DELIVERED DAY {{delivered_day}} · {{gates_passed_count}} GATES PASSED · BUILT BY {{built_by_names}}
+        </div>
+      </article>
+      {{/each_case_study}}
+    </div>
+  </div>
+</section>
+
+<!-- ───────────────────── STANDARDS ───────────────────── -->
+<section id="standards" class="border-b hairline bg-[var(--ink)] text-[var(--paper)]">
+  <div class="max-w-7xl mx-auto px-6 py-24">
+    <div class="grid md:grid-cols-12 gap-12">
+      <div class="md:col-span-4">
+        <div class="text-xs mono opacity-60 mb-3">04 — STANDARDS</div>
+        <h2 class="text-3xl md:text-4xl font-medium tracking-tight">
+          How we work
+        </h2>
+      </div>
+      <div class="md:col-span-7 md:col-start-6 space-y-8">
+        <div>
+          <div class="text-xs mono opacity-60 mb-2">CODING</div>
+          <p class="text-base leading-relaxed">
+            TypeScript and Python by default. Conventional commits. 80% test coverage minimum on changed code.
+            No flaky tests in main. Lint clean or no merge.
+          </p>
+        </div>
+        <div>
+          <div class="text-xs mono opacity-60 mb-2">UX</div>
+          <p class="text-base leading-relaxed">
+            WCAG 2.2 AA minimum. LCP &lt; 2.5s, INP &lt; 200ms, CLS &lt; 0.1 on mid-tier mobile.
+            Mobile-first, every state designed (loading, empty, error).
+          </p>
+        </div>
+        <div>
+          <div class="text-xs mono opacity-60 mb-2">SECURITY</div>
+          <p class="text-base leading-relaxed">
+            No secrets in source. Inputs validated at trust boundaries. Auth required on every
+            non-public endpoint. Rate limiting on auth. CSP everywhere.
+          </p>
+        </div>
+        <div>
+          <div class="text-xs mono opacity-60 mb-2">PRIVACY (DSGVO)</div>
+          <p class="text-base leading-relaxed">
+            Data minimization by default. Explicit consent where required. 30-day default log retention.
+            Right to erasure technically achievable.
+          </p>
+        </div>
+        <div>
+          <div class="text-xs mono opacity-60 mb-2">RELEASE</div>
+          <p class="text-base leading-relaxed">
+            Three stages — sandbox, staging, production. Production is immutable, hash-pinned,
+            and verified on every session start. New work = new version. Never modified.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────────────── CONTACT ───────────────────── -->
+<section id="contact" class="border-b hairline">
+  <div class="max-w-7xl mx-auto px-6 py-24 text-center">
+    <div class="text-xs mono muted mb-3">05 — CONTACT</div>
+    <h2 class="text-4xl md:text-6xl font-medium tracking-tight mb-8 max-w-3xl mx-auto">
+      Have a brief? Drop it in <span class="mono bg-[var(--line)] px-3 py-1">inbox/</span>
+    </h2>
+    <p class="text-lg muted max-w-xl mx-auto mb-10">
+      Text, files, data, voice transcripts — anything works. The firm scans the inbox
+      every session and starts a ticket. You'll get an email if we have questions.
+    </p>
+    <div class="inline-flex flex-col items-center gap-1">
+      <a href="mailto:{{customer_email}}" class="text-base ink underline">{{customer_email}}</a>
+      <div class="text-xs mono muted mt-2">CLIENT · {{customer_name}}</div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────────────── FOOTER ───────────────────── -->
+<footer class="bg-[var(--paper)]">
+  <div class="max-w-7xl mx-auto px-6 py-10 flex flex-col md:flex-row justify-between items-start gap-6 text-xs mono muted">
+    <div>
+      <div class="ink font-medium not-mono text-base mb-1">{{firm_name}}</div>
+      <div>Est. {{firm_founded_year}} · {{firm_slogan}}</div>
+    </div>
+    <div class="text-right space-y-1">
+      <div>FIRM DAY {{firm_day}} · SPRINT {{current_sprint}} · DAY {{sprint_day}}/10</div>
+      <div>AUDIT CHAIN: ✓ VERIFIED · DRIFT ALERTS: {{open_drift_alerts}}</div>
+      <div>PAGE GENERATED {{last_updated_real}}</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
