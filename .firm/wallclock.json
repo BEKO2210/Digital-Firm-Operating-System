@@ -1,0 +1,19 @@
+{
+  "firm_day": 1,
+  "office_hour": "09:00",
+  "current_sprint": "sprint-001",
+  "sprint_day": 1,
+  "real_world_anchor": "2026-05-13T09:00:00Z",
+  "last_advanced_at": "2026-05-13T09:00:00Z",
+  "calendar": {
+    "office_hours": "09:00-18:00",
+    "workdays": [
+      "Mon",
+      "Tue",
+      "Wed",
+      "Thu",
+      "Fri"
+    ],
+    "skip_weekends": true
+  }
+}

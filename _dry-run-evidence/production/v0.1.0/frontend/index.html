@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Eine schlichte Hallo-Welt-Seite von Nordlicht Digital." />
+<meta name="color-scheme" content="light dark" />
+<meta name="theme-color" content="#fafaf9" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)" />
+<title>Hallo Welt — Nordlicht Digital</title>
+<style>
+  :root {
+    --ink: #0a0a0a;
+    --paper: #fafaf9;
+    --muted: #525258;
+    --line: #e4e4e7;
+    --focus: #2563eb;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --ink: #fafaf9; --paper: #0a0a0a; --muted: #a1a1aa; --line: #27272a; --focus: #93c5fd; }
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: ui-sans-serif, system-ui, -apple-system, "Inter", Roboto, sans-serif;
+    line-height: 1.55;
+  }
+  :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 2px; }
+  main {
+    flex: 1;
+    max-width: 38rem;
+    margin: 0 auto;
+    padding: clamp(2rem, 8vw, 4.5rem) 1.25rem;
+  }
+  h1 {
+    font-size: clamp(2rem, 8vw, 3.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    font-weight: 500;
+    margin: 0 0 1rem;
+    max-width: 22ch;
+  }
+  p.lede {
+    font-size: clamp(1rem, 2.5vw, 1.125rem);
+    color: var(--muted);
+    margin: 0;
+    max-width: 60ch;
+  }
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 1rem 1.25rem;
+    font-size: 0.875rem;
+    color: var(--muted);
+    text-align: center;
+  }
+  @media print {
+    body { background: white; color: black; }
+    footer { border-top: 1px solid #ccc; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <h1>Hallo Welt</h1>
+  <p class="lede">
+    Dies ist eine schlichte Hallo-Welt-Seite. Sie wurde von Nordlicht Digital
+    als interner Pipeline-Test erstellt: ein einziges HTML-Dokument mit deutschem
+    Text, einer Überschrift, einem kurzen Absatz und einer Fußzeile mit der
+    aktuellen Jahreszahl. Sie erfüllt die Anforderungen der WCAG 2.2 AA.
+  </p>
+</main>
+<footer>© 2026 · Nordlicht Digital</footer>
+</body>
+</html>

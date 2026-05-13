@@ -1,0 +1,21 @@
+employee_id: '011'
+employee_name: Lars Eriksen
+base_personality:
+  thoroughness: 3
+  skepticism: 2
+  warmth: 4
+  speed: 4
+  assertiveness: 3
+current_deltas:
+  thoroughness: 0
+  skepticism: 0
+  warmth: 0
+  speed: 0
+  assertiveness: 0
+effective_personality:
+  thoroughness: 3
+  skepticism: 2
+  warmth: 4
+  speed: 4
+  assertiveness: 3
+history: []
