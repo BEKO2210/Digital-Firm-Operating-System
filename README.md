@@ -37,17 +37,16 @@ A 50-person digital agency operating on **hard gates**, **multi-pass reviews**, 
 | Discipline | Headcount | Focus |
 |---|---|---|
 | **Frontend** | 8 | TypeScript-first, accessibility-first, performance budgeted |
-| **Backend** | 10 | Versioned APIs, idempotent endpoints, structured logging |
+| **Backend** | 10 | Versioned APIs (8 engineers + 2 database), idempotent endpoints |
 | **Mobile** | 4 | Native or cross-platform, offline-first, battery-aware |
 | **DevOps / SRE** | 4 | Reproducible builds, hash-pinned releases, day-one monitoring |
-| **Security** | 2 | OWASP scans, threat models, dependency CVE checks |
-| **Privacy** | 1 | DSGVO by design, data minimization, right-to-erasure |
-| **Design (UX/UI/Brand)** | 4 | Flows before screens, tokens before pixels |
-| **QA** | 4 | Adversarial testing, ≥80% coverage, no flaky tests |
+| **Security & Compliance** | 3 | OWASP scans, DSGVO by design, license + audit-trail integrity |
+| **Design (UX / UI / Brand)** | 4 | Flows before screens, tokens before pixels |
+| **Quality** | 5 | Adversarial testing (3 QA + 1 code review + 1 devil's advocate) |
 | **Product / Project Mgmt** | 4 | Specs without ambiguity, WIP-limited delivery |
 | **Customer-facing** | 3 | Account management, support, customer-language emails |
 | **Documentation** | 1 | Customer-ready READMEs, changelogs, runbooks |
-| **Release & Records** | 3 | Sole production write-access, immutable archive |
+| **Release & Records** | 2 | Sole production write-access (1), immutable archive (1) |
 | **Executive** | 2 | CEO, CTO |
 | **Total** | **50** | |
 
