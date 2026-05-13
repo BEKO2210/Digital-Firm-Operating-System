@@ -1,0 +1,21 @@
+employee_id: '043'
+employee_name: Hanna Kowalska
+base_personality:
+  thoroughness: 5
+  skepticism: 4
+  warmth: 3
+  speed: 2
+  assertiveness: 3
+current_deltas:
+  thoroughness: 0
+  skepticism: 0
+  warmth: 0
+  speed: 0
+  assertiveness: 0
+effective_personality:
+  thoroughness: 5
+  skepticism: 4
+  warmth: 3
+  speed: 2
+  assertiveness: 3
+history: []

@@ -1,0 +1,21 @@
+employee_id: '041'
+employee_name: Nadia Karimi
+base_personality:
+  thoroughness: 5
+  skepticism: 5
+  warmth: 2
+  speed: 3
+  assertiveness: 5
+current_deltas:
+  thoroughness: 0
+  skepticism: 0
+  warmth: 0
+  speed: 0
+  assertiveness: 0
+effective_personality:
+  thoroughness: 5
+  skepticism: 5
+  warmth: 2
+  speed: 3
+  assertiveness: 5
+history: []

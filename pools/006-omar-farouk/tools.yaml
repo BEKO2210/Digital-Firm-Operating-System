@@ -1,0 +1,11 @@
+employee_id: '006'
+allowed_tools:
+  claude_code:
+  - Read
+  - Write
+  - Edit
+  - Grep
+  - Glob
+  external: []
+  forbidden:
+  - production-write

@@ -1,0 +1,35 @@
+id: TCK-20260513-0001
+type: dry-run
+complexity: Trivial
+state: archived
+phase: Release
+title: Hello, World — single-page site
+created_real: '2026-05-13T09:10:00Z'
+created_sim: Day 1, 09:10
+owners:
+- '003'
+- '015'
+summary: Single-page Hallo-Welt site. WCAG 2.2 AA. Used as the firm's end-to-end pipeline
+  self-test.
+version: v0.1.0
+delivered_day: 1
+gates_passed:
+- A1-QA
+- A2-Security
+- A3-Quality
+- B1-Regression
+- B2-Privacy
+- B3-Compliance
+- B4-UX-Acceptance
+built_by_names:
+- Diego Rivera
+- Anika Müller
+- Nadia Karimi
+- Sofia Conti
+- Hanna Wickström
+- Camila Reyes
+tags:
+- html
+- wcag
+- de-DE
+- dry-run

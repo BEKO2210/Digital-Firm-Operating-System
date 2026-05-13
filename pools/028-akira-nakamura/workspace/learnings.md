@@ -1,0 +1,3 @@
+# Akira Nakamura — learnings
+
+_No completed tickets yet._

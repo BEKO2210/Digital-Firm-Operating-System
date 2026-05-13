@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Nordlicht Digital — We build software the way it should be built.</title>
+<meta name="description" content="Nordlicht Digital — a 50-person digital agency built on hard gates, multi-pass reviews, and an immutable production pipeline." />
+<meta name="theme-color" content="#fafaf9" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)" />
+<meta name="color-scheme" content="light dark" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Nordlicht Digital — We build software the way it should be built." />
+<meta property="og:description" content="A 50-person digital agency. Hard gates. Multi-pass reviews. Immutable production." />
+<meta property="og:image" content="/assets/og-image.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Nordlicht Digital — We build software the way it should be built." />
+<meta name="twitter:description" content="Hard gates. Multi-pass reviews. Immutable production." />
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+
+<!--
+  Critical CSS inlined for offline-correct, no-FOUC rendering.
+  Tailwind is loaded as an async enhancement below; the page must render correctly without it.
+-->
+<style>
+  :root {
+    --ink: #0a0a0a;
+    --paper: #fafaf9;
+    --muted: #525258;
+    --muted-2: #71717a;
+    --line: #e4e4e7;
+    --accent: #18181b;
+    --focus: #2563eb;
+    --max-w: 80rem;
+    --gutter: clamp(1rem, 4vw, 1.5rem);
+    --space-section: clamp(3.5rem, 8vw, 6rem);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ink: #fafaf9;
+      --paper: #0a0a0a;
+      --muted: #a1a1aa;
+      --muted-2: #71717a;
+      --line: #27272a;
+      --accent: #e4e4e7;
+      --focus: #93c5fd;
+    }
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: ui-sans-serif, system-ui, -apple-system, "Inter", "Segoe UI", Roboto, sans-serif;
+    font-feature-settings: "ss01","ss02";
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+  img, svg { max-width: 100%; height: auto; display: block; }
+  a { color: inherit; text-decoration-color: var(--line); text-underline-offset: 0.2em; }
+  a:hover { text-decoration-color: var(--ink); }
+
+  /* Focus + skip link */
+  :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 2px; }
+  .skip-link {
+    position: absolute; left: 0.5rem; top: -3rem; z-index: 100;
+    background: var(--ink); color: var(--paper); padding: 0.5rem 0.75rem;
+    border: 2px solid var(--paper); border-radius: 2px;
+    text-decoration: none; font-size: 0.875rem;
+    transition: top 0.15s ease;
+  }
+  .skip-link:focus { top: 0.5rem; }
+
+  .container {
+    max-width: var(--max-w);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+  .mono { font-family: ui-monospace, "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace; }
+  .muted { color: var(--muted); }
+  .hairline-b { border-bottom: 1px solid var(--line); }
+  .hairline-t { border-top: 1px solid var(--line); }
+
+  /* Header */
+  header.site {
+    position: sticky; top: 0; z-index: 50;
+    background: color-mix(in srgb, var(--paper) 90%, transparent);
+    -webkit-backdrop-filter: saturate(180%) blur(8px);
+    backdrop-filter: saturate(180%) blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .h-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-block: 0.875rem; gap: 1rem;
+  }
+  .brand { display: inline-flex; align-items: center; gap: 0.625rem; min-width: 0; }
+  .brand-mark {
+    inline-size: 2rem; block-size: 2rem;
+    background: var(--ink); color: var(--paper);
+    display: grid; place-items: center;
+    font-family: ui-monospace, monospace; font-size: 0.875rem;
+  }
+  .brand-name { font-weight: 500; letter-spacing: -0.01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  nav.top { display: none; gap: 1.5rem; font-size: 0.875rem; color: var(--muted); }
+  nav.top a { text-decoration: none; padding: 0.5rem 0; }
+  nav.top a:hover, nav.top a:focus-visible { color: var(--ink); }
+  .cta {
+    background: var(--ink); color: var(--paper);
+    padding: 0.625rem 0.875rem; text-decoration: none;
+    font-size: 0.875rem; min-height: 44px;
+    display: inline-flex; align-items: center;
+  }
+  .cta:hover { opacity: 0.9; }
+
+  /* Hero */
+  .hero { padding-block: clamp(3rem, 10vw, 7rem); }
+  .hero-meta {
+    font-family: ui-monospace, monospace; font-size: 0.75rem; color: var(--muted);
+    margin-bottom: 1.25rem; letter-spacing: 0.02em;
+  }
+  h1.hero-title {
+    font-size: clamp(2rem, 8vw, 4.5rem);
+    line-height: 1.02; letter-spacing: -0.02em;
+    font-weight: 500; margin: 0;
+    max-width: 22ch;
+  }
+  .hero-lede {
+    margin-top: 1.5rem;
+    font-size: clamp(1rem, 2.4vw, 1.25rem);
+    color: var(--muted); line-height: 1.55;
+    max-width: 60ch;
+  }
+  .pillrow { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 0.5rem; font-size: 0.875rem; }
+  .pill { border: 1px solid var(--line); padding: 0.375rem 0.75rem; min-height: 32px; display: inline-flex; align-items: center; }
+
+  /* Stats */
+  .stats-wrap { background: var(--ink); color: var(--paper); border-block: 1px solid var(--line); }
+  .stats-wrap .container { padding-block: 2.5rem; }
+  .stats-head { font-family: ui-monospace, monospace; font-size: 0.75rem; opacity: 0.6; margin-bottom: 1rem; }
+  .stats-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem 1.25rem; }
+  .stat-num { font-size: clamp(1.5rem, 4vw, 1.875rem); font-weight: 500; line-height: 1.1; }
+  .stat-lbl { font-family: ui-monospace, monospace; font-size: 0.6875rem; opacity: 0.7; margin-top: 0.25rem; letter-spacing: 0.08em; text-transform: uppercase; }
+
+  /* Marquee */
+  .marquee {
+    border-block: 1px solid var(--line); overflow: hidden;
+    color: var(--muted); font-family: ui-monospace, monospace; font-size: 0.75rem;
+  }
+  .marquee-track {
+    display: flex; gap: 4rem; white-space: nowrap;
+    padding-block: 0.75rem;
+    animation: scroll 60s linear infinite;
+    width: max-content;
+  }
+  .marquee-track > span { display: inline-block; }
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track { animation: none; transform: none; gap: 2rem; white-space: normal; flex-wrap: wrap; width: 100%; padding-inline: var(--gutter); }
+  }
+
+  /* Section heading layout */
+  section.std { padding-block: var(--space-section); border-bottom: 1px solid var(--line); }
+  .sec-head { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-bottom: 3rem; }
+  .sec-tag { font-family: ui-monospace, monospace; font-size: 0.75rem; color: var(--muted); margin-bottom: 0.5rem; }
+  h2.sec-title { font-size: clamp(1.75rem, 4vw, 2.25rem); font-weight: 500; letter-spacing: -0.015em; margin: 0; }
+  .sec-lede { font-size: clamp(1rem, 2vw, 1.125rem); color: var(--muted); line-height: 1.6; max-width: 60ch; margin: 0; }
+
+  /* Service cards */
+  .grid-services {
+    display: grid; grid-template-columns: 1fr; gap: 1px;
+    background: var(--line); border: 1px solid var(--line);
+  }
+  .grid-services article { background: var(--paper); padding: 1.5rem; }
+  .svc-tag { font-family: ui-monospace, monospace; font-size: 0.6875rem; color: var(--muted); margin-bottom: 0.75rem; letter-spacing: 0.05em; }
+  .svc-title { font-size: 1.125rem; font-weight: 500; margin: 0 0 0.5rem; }
+  .svc-body { color: var(--muted); font-size: 0.9375rem; line-height: 1.6; margin: 0; max-width: 60ch; }
+
+  /* Team grid */
+  .grid-team {
+    display: grid; grid-template-columns: 1fr; gap: 1px;
+    background: var(--line); border: 1px solid var(--line);
+  }
+  .grid-team .team-card { background: var(--paper); padding: 1rem 1.125rem; }
+  .avatar {
+    inline-size: 2.25rem; block-size: 2.25rem;
+    background: var(--ink); color: var(--paper);
+    display: grid; place-items: center;
+    font-family: ui-monospace, monospace; font-size: 0.75rem;
+    margin-bottom: 0.625rem;
+  }
+  .t-name { font-weight: 500; font-size: 0.875rem; line-height: 1.25; }
+  .t-role { font-size: 0.75rem; color: var(--muted); margin-top: 0.125rem; }
+  .t-dept { font-size: 0.75rem; color: var(--muted-2); margin-top: 0.125rem; font-style: italic; }
+
+  /* Case studies */
+  .grid-cases { display: grid; grid-template-columns: 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .grid-cases article { background: var(--paper); padding: 1.5rem; }
+  .case-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.75rem; font-family: ui-monospace, monospace; font-size: 0.75rem; }
+  .case-id { color: var(--muted); }
+  .case-ver { color: var(--ink); }
+  .case-title { font-size: 1.125rem; font-weight: 500; margin: 0 0 0.5rem; }
+  .case-summary { color: var(--muted); font-size: 0.9375rem; line-height: 1.6; margin: 0 0 0.75rem; max-width: 60ch; }
+  .case-tags { display: flex; flex-wrap: wrap; gap: 0.375rem; font-size: 0.75rem; }
+  .tag { border: 1px solid var(--line); padding: 0.125rem 0.5rem; }
+  .case-foot { font-family: ui-monospace, monospace; font-size: 0.6875rem; color: var(--muted); margin-top: 0.875rem; }
+  .case-empty { grid-column: 1 / -1; }
+
+  /* Standards (inverted) */
+  .std-inverted { background: var(--ink); color: var(--paper); border-bottom: 1px solid var(--line); }
+  .std-inverted .sec-tag { color: rgba(250,250,249,0.6); }
+  .std-inverted .muted { color: rgba(250,250,249,0.7); }
+  .std-block .lbl { font-family: ui-monospace, monospace; font-size: 0.75rem; opacity: 0.6; margin-bottom: 0.5rem; letter-spacing: 0.05em; }
+  .std-block p { margin: 0 0 1.5rem; line-height: 1.65; max-width: 65ch; }
+
+  /* Contact */
+  .contact { text-align: center; padding-block: var(--space-section); border-bottom: 1px solid var(--line); }
+  h2.contact-title { font-size: clamp(2rem, 6vw, 3.5rem); font-weight: 500; letter-spacing: -0.02em; margin: 0 auto 1.5rem; max-width: 22ch; }
+  .inbox-chip { font-family: ui-monospace, monospace; background: var(--line); color: var(--ink); padding: 0.2em 0.5em; }
+  .contact p { color: var(--muted); max-width: 38rem; margin: 0 auto 2rem; font-size: 1.0625rem; line-height: 1.55; }
+  .contact a.email { font-size: 1rem; text-decoration: underline; min-height: 44px; display: inline-flex; align-items: center; padding: 0.5rem 0; }
+  .contact .client-line { display: block; margin-top: 0.625rem; font-family: ui-monospace, monospace; font-size: 0.75rem; color: var(--muted); }
+
+  /* Footer */
+  footer.site { padding-block: 2.5rem; background: var(--paper); }
+  footer.site .container { display: flex; flex-direction: column; gap: 1.25rem; justify-content: space-between; align-items: flex-start; font-family: ui-monospace, monospace; font-size: 0.75rem; color: var(--muted); }
+  .footer-name { color: var(--ink); font-family: ui-sans-serif, system-ui, sans-serif; font-weight: 500; font-size: 1rem; margin-bottom: 0.25rem; }
+  .footer-right { text-align: left; display: grid; gap: 0.25rem; }
+
+  /* Breakpoint: tablet (≥48em / 768px) */
+  @media (min-width: 48em) {
+    nav.top { display: inline-flex; }
+    .stats-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .sec-head { grid-template-columns: 1fr 2fr; gap: 3rem; }
+    .sec-lede { margin-top: 0; }
+    .grid-services { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-team { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid-cases { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    footer.site .container { flex-direction: row; align-items: flex-start; }
+    .footer-right { text-align: right; }
+  }
+
+  /* Breakpoint: desktop (≥64em / 1024px) */
+  @media (min-width: 64em) {
+    .grid-services { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid-team { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .stats-grid { grid-template-columns: repeat(7, minmax(0, 1fr)); }
+    .grid-services article, .grid-cases article { padding: 2rem; }
+  }
+  @media (min-width: 80em) {
+    .grid-team { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  }
+
+  /* Print */
+  @media print {
+    header.site, nav.top, .cta, .marquee, .stats-wrap, .skip-link { display: none !important; }
+    body { background: white; color: black; }
+    section.std, .contact { break-inside: avoid; padding-block: 2rem; border-bottom: 1px solid #ccc; }
+    a { color: black; text-decoration: underline; }
+    .grid-services, .grid-team, .grid-cases { border: 1px solid #ccc; background: #ccc; }
+    .grid-services article, .grid-team .team-card, .grid-cases article { background: white; }
+  }
+
+  /* -----------------------------------------------------------------
+     Mobile horizontal-scroll hardening — purely additive.
+     Adds belt-and-suspenders overflow lock + neutralizes the
+     <dd> user-agent margin that was pushing stat values past their
+     2-column grid cells on narrow viewports (≤414px).
+     Safe to remove — does not affect any existing rule.
+     ----------------------------------------------------------------- */
+  html { overflow-x: hidden; max-width: 100%; }
+  body { max-width: 100%; }
+  main, header.site, footer.site, section, .container { max-width: 100%; }
+
+  /* Kill UA default margins inside stats DL so the number stays in its cell */
+  .stats-grid, .stats-grid > div, .stats-grid dt, .stats-grid dd { margin: 0; padding: 0; min-width: 0; }
+  .stats-grid > div { display: flex; flex-direction: column-reverse; gap: 0.25rem; min-width: 0; }
+  .stat-num, .stat-lbl { min-width: 0; overflow-wrap: anywhere; word-break: break-word; }
+
+  /* Grid item shrinkability — prevents single long words/tracks expanding the page */
+  .grid-services > article, .grid-team .team-card, .grid-cases > article { min-width: 0; }
+  .t-name, .t-role, .t-dept, .svc-title, .svc-body, .case-title, .case-summary, .case-foot {
+    min-width: 0; overflow-wrap: anywhere; word-break: break-word;
+  }
+
+  /* Long headings + body copy must wrap gracefully on narrow screens */
+  h1.hero-title, h2.sec-title, h2.contact-title, .hero-meta, .hero-lede, .sec-lede, .std-block p {
+    overflow-wrap: anywhere; word-break: break-word;
+  }
+
+  /* Email + brand-name + footer right-column safety */
+  .contact a.email, .contact .client-line, .footer-right > * { overflow-wrap: anywhere; word-break: break-word; }
+  .brand-name { max-width: calc(100vw - 12rem); }
+
+  /* Marquee final belt: clip via inline-size so a transformed track cannot escape */
+  .marquee { inline-size: 100%; max-inline-size: 100vw; overflow-x: hidden; }
+  .marquee-track { will-change: transform; }
+
+  /* Header row: allow the brand chunk to shrink so the CTA never pushes anything offscreen */
+  .h-row { min-width: 0; flex-wrap: nowrap; }
+  .h-row > * { min-width: 0; }
+  .brand { flex: 0 1 auto; min-width: 0; }
+  .cta { flex: 0 0 auto; white-space: nowrap; }
+
+  /* Container gutter is already clamped, but lock the inline-axis just in case a parent forces wider */
+  .container { inline-size: 100%; }
+</style>
+
+<!-- Tailwind CDN loaded as an async enhancement; page must render correctly without it. -->
+<script src="https://cdn.tailwindcss.com" defer></script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site" role="banner">
+  <div class="container h-row">
+    <a href="#main" class="brand" aria-label="Nordlicht Digital — home">
+      <span class="brand-mark" aria-hidden="true">◆</span>
+      <span class="brand-name">Nordlicht Digital</span>
+    </a>
+    <nav class="top" aria-label="Primary">
+      <a href="#services">Services</a>
+      <a href="#team">Team</a>
+      <a href="#work">Work</a>
+      <a href="#standards">Standards</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#contact" class="cta">Start a project →</a>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero hairline-b" aria-labelledby="hero-title">
+  <div class="container">
+    <p class="hero-meta mono">EST. 2026 · DAY 1 · SPRINT sprint-001</p>
+    <h1 id="hero-title" class="hero-title">We build software the way it should be built.</h1>
+    <p class="hero-lede">
+      A 50-person digital agency operating on hard gates, multi-pass reviews,
+      and an immutable production pipeline. We build software the way it should be built —
+      slowly, honestly, and only after three people have tried to break it.
+    </p>
+    <div class="pillrow" role="list" aria-label="Disciplines">
+      <span class="pill" role="listitem">Web</span>
+      <span class="pill" role="listitem">Mobile</span>
+      <span class="pill" role="listitem">Backend</span>
+      <span class="pill" role="listitem">DevOps</span>
+      <span class="pill" role="listitem">Security</span>
+      <span class="pill" role="listitem">UX/UI</span>
+      <span class="pill" role="listitem">DSGVO</span>
+    </div>
+  </div>
+</section>
+
+<section class="stats-wrap" aria-labelledby="stats-head">
+  <div class="container">
+    <h2 id="stats-head" class="stats-head mono">LIVE — UPDATED 2026-05-13T09:00:00Z</h2>
+    <dl class="stats-grid">
+      <div><dt class="stat-lbl">Active</dt><dd class="stat-num">0/3</dd></div>
+      <div><dt class="stat-lbl">Awaiting reply</dt><dd class="stat-num">0</dd></div>
+      <div><dt class="stat-lbl">Sprint · Day 1/10</dt><dd class="stat-num">sprint-001</dd></div>
+      <div><dt class="stat-lbl">Firm day</dt><dd class="stat-num">1</dd></div>
+      <div><dt class="stat-lbl">Releases · —</dt><dd class="stat-num">0</dd></div>
+      <div><dt class="stat-lbl">Last gate</dt><dd class="stat-num">PASS (RELEASE)</dd></div>
+      <div><dt class="stat-lbl">Drift alerts</dt><dd class="stat-num">0</dd></div>
+    </dl>
+  </div>
+</section>
+
+<div class="marquee" role="presentation" aria-hidden="true">
+  <div class="marquee-track mono">
+    <span>HARD GATES · ZERO DRIFT · FORENSIC AUDIT · IMMUTABLE PRODUCTION · MULTI-PASS REVIEW · DSGVO READY · WCAG 2.2 AA · SHA-256 PINNED · HARD GATES · ZERO DRIFT · FORENSIC AUDIT · IMMUTABLE PRODUCTION · MULTI-PASS REVIEW · DSGVO READY · WCAG 2.2 AA · SHA-256 PINNED</span>
+  </div>
+</div>
+
+<section id="services" class="std" aria-labelledby="services-title">
+  <div class="container">
+    <header class="sec-head">
+      <div>
+        <p class="sec-tag mono">01 — SERVICES</p>
+        <h2 id="services-title" class="sec-title">What we build</h2>
+      </div>
+      <p class="sec-lede">
+        Every engagement runs through the same five phases — Discovery, Design, Build, Harden, Release.
+        Every artifact passes Self review, Peer review, and a Devil's Advocate pass before any gate.
+        No exceptions. No shortcuts.
+      </p>
+    </header>
+    <div class="grid-services">
+      <article>
+        <p class="svc-tag mono">FRONTEND · 8 PEOPLE</p>
+        <h3 class="svc-title">Websites &amp; Web Apps</h3>
+        <p class="svc-body">TypeScript-first. Accessibility-first. Performance budgets enforced at the gate. We ship interfaces that work for everyone, in every browser, on every connection.</p>
+      </article>
+      <article>
+        <p class="svc-tag mono">BACKEND · 10 PEOPLE</p>
+        <h3 class="svc-title">APIs &amp; Services</h3>
+        <p class="svc-body">Boring, versioned, well-documented. Idempotent where it matters, observable everywhere, and reviewed by people who weren't on the keyboard.</p>
+      </article>
+      <article>
+        <p class="svc-tag mono">MOBILE · 4 PEOPLE</p>
+        <h3 class="svc-title">Apps for Phone, Tablet, TV</h3>
+        <p class="svc-body">Native or cross-platform. Offline-first patterns, battery-aware behavior, and the same gate policy as the rest of the firm.</p>
+      </article>
+      <article>
+        <p class="svc-tag mono">DEVOPS / SRE · 4 PEOPLE</p>
+        <h3 class="svc-title">Infrastructure &amp; Reliability</h3>
+        <p class="svc-body">Reproducible builds, hash-pinned releases, runbooks for every service. Monitoring is shipped on day one, not "later".</p>
+      </article>
+      <article>
+        <p class="svc-tag mono">SECURITY · 2 PEOPLE</p>
+        <h3 class="svc-title">Hardening &amp; Compliance</h3>
+        <p class="svc-body">OWASP Top 10, dependency CVE scans, threat models for non-trivial features. Privacy by design — DSGVO is a baseline, not a feature.</p>
+      </article>
+      <article>
+        <p class="svc-tag mono">DESIGN · 4 PEOPLE</p>
+        <h3 class="svc-title">UX &amp; UI</h3>
+        <p class="svc-body">Flows before screens. Tokens before pixels. Every acceptance criterion verified one-to-one against the built artifact before release.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="team" class="std" aria-labelledby="team-title">
+  <div class="container">
+    <header class="sec-head">
+      <div>
+        <p class="sec-tag mono">02 — TEAM</p>
+        <h2 id="team-title" class="sec-title">50 people, named.</h2>
+      </div>
+      <p class="sec-lede">
+        Every employee has a name, a profile, a personal pool, and a personality that evolves with the work.
+        Reviews stay sharp because the same person doesn't approve their own code. Seniors get strict after misses.
+        Juniors get bolder after wins. The firm learns.
+      </p>
+    </header>
+    <div class="grid-team">
+        <article class="team-card">
+          <div class="avatar" aria-hidden="true">AL</div>
+          <div class="t-name">Anna Lindqvist</div>
+          <div class="t-role">Chief Executive Officer</div>
+          <div class="t-dept">Executive</div>
+        </article>
+        <article class="team-card">
+          <div class="avatar" aria-hidden="true">MC</div>
+          <div class="t-name">Marcus Chen</div>
+          <div class="t-role">Chief Technology Officer</div>
+          <div class="t-dept">Executive</div>
+        </article>
+        <article class="team-card">
+          <div class="avatar" aria-hidden="true">PS</div>
+          <div class="t-name">Priya Sharma</div>
+          <div class="t-role">Product Owner</div>
+          <div class="t-dept">Product Management</div>
+        </article>
+        <article class="team-card">
+          <div class="avatar" aria-hidden="true">TF</div>
+          <div class="t-name">Tomás Fischer</div>
+          <div class="t-role">Product Owner</div>
+          <div class="t-dept">Product Management</div>
+        </article>
+        <article class="team-card">
+          <div class="avatar" aria-hidden="true">HN</div>
+          <div class="t-name">Hanna Novák</div>
+          <div class="t-role">Project Manager</div>
+          <div class="t-dept">Product Management</div>
+        </article>
+        <article class="team-card">
+          <div class="avatar" aria-hidden="true">OF</div>
+          <div class="t-name">Omar Farouk</div>
+          <div class="t-role">Project Manager</div>
+          <div class="t-dept">Product Management</div>
+        </article>
+        <article class="team-card">
+          <div class="avatar" aria-hidden="true">SC</div>
+          <div class="t-name">Sofia Conti</div>
+          <div class="t-role">UX Designer</div>
+          <div class="t-dept">Design</div>
+        </article>
+        <article class="team-card">
+          <div class="avatar" aria-hidden="true">KA</div>
+          <div class="t-name">Kwame Asante</div>
+          <div class="t-role">UX Designer</div>
+          <div class="t-dept">Design</div>
+        </article>
+        <article class="team-card">
+          <div class="avatar" aria-hidden="true">YT</div>
+          <div class="t-name">Yuki Tanaka</div>
+          <div class="t-role">UI Designer</div>
+          <div class="t-dept">Design</div>
+        </article>
+        <article class="team-card">
+          <div class="avatar" aria-hidden="true">LH</div>
+          <div class="t-name">Layla Hassan</div>
+          <div class="t-role">Brand Guardian</div>
+          <div class="t-dept">Design</div>
+        </article>
+        <article class="team-card">
+          <div class="avatar" aria-hidden="true">LE</div>
+          <div class="t-name">Lars Eriksen</div>
+          <div class="t-role">Frontend Engineer</div>
+          <div class="t-dept">Engineering — Frontend</div>
+        </article>
+        <article class="team-card">
+          <div class="avatar" aria-hidden="true">MV</div>
+          <div class="t-name">Mateo Vargas</div>
+          <div class="t-role">Frontend Engineer</div>
+          <div class="t-dept">Engineering — Frontend</div>
+        </article>
+        <article class="team-card">
+          <div class="avatar" aria-hidden="true">MC</div>
+          <div class="t-name">Mariana Costa</div>
+          <div class="t-role">Frontend Engineer</div>
+          <div class="t-dept">Engineering — Frontend</div>
+        </article>
+        <article class="team-card">
+          <div class="avatar" aria-hidden="true">AP</div>
+          <div class="t-name">Arjun Patel</div>
+          <div class="t-role">Frontend Engineer</div>
+          <div class="t-dept">Engineering — Frontend</div>
+        </article>
+        <article class="team-card">
+          <div class="avatar" aria-hidden="true">DR</div>
+          <div class="t-name">Diego Rivera</div>
+          <div class="t-role">Frontend Engineer</div>
+          <div class="t-dept">Engineering — Frontend</div>
+        </article>
+        <article class="team-card">
+          <div class="avatar" aria-hidden="true">ZO</div>
+          <div class="t-name">Zara Okonkwo</div>
+          <div class="t-role">Frontend Engineer</div>
+          <div class="t-dept">Engineering — Frontend</div>
+        </article>
+        <article class="team-card">
+          <div class="avatar" aria-hidden="true">KB</div>
+          <div class="t-name">Klaus Bergmann</div>
+          <div class="t-role">Frontend Engineer</div>
+          <div class="t-dept">Engineering — Frontend</div>
+        </article>
+        <article class="team-card">
+          <div class="avatar" aria-hidden="true">AB</div>
+          <div class="t-name">Astrid Berg</div>
+          <div class="t-role">Frontend Engineer</div>
+          <div class="t-dept">Engineering — Frontend</div>
+        </article>
+        <article class="team-card">
+          <div class="avatar" aria-hidden="true">NP</div>
+          <div class="t-name">Nikolai Petrov</div>
+          <div class="t-role">Backend Engineer</div>
+          <div class="t-dept">Engineering — Backend</div>
+        </article>
+        <article class="team-card">
+          <div class="avatar" aria-hidden="true">AK</div>
+          <div class="t-name">Aisha Khan</div>
+          <div class="t-role">Backend Engineer</div>
+          <div class="t-dept">Engineering — Backend</div>
+        </article>
+        <article class="team-card">
+          <div class="avatar" aria-hidden="true">RK</div>
+          <div class="t-name">Ravi Kumar</div>
+          <div class="t-role">Backend Engineer</div>
+          <div class="t-dept">Engineering — Backend</div>
+        </article>
+        <article class="team-card">
+          <div class="avatar" aria-hidden="true">ML</div>
+          <div class="t-name">Mei Lin Wong</div>
+          <div class="t-role">Backend Engineer</div>
+          <div class="t-dept">Engineering — Backend</div>
+        </article>
+        <article class="team-card">
+          <div class="avatar" aria-hidden="true">FS</div>
+          <div class="t-name">Felipe Silva</div>
+          <div class="t-role">Backend Engineer</div>
+          <div class="t-dept">Engineering — Backend</div>
+        </article>
+        <article class="team-card">
+          <div class="avatar" aria-hidden="true">NL</div>
+          <div class="t-name">Niko Lehtinen</div>
+          <div class="t-role">Backend Engineer</div>
+          <div class="t-dept">Engineering — Backend</div>
+        </article>
+        <article class="team-card">
+          <div class="avatar" aria-hidden="true">ND</div>
+          <div class="t-name">Naledi Dlamini</div>
+          <div class="t-role">Backend Engineer</div>
+          <div class="t-dept">Engineering — Backend</div>
+        </article>
+        <article class="team-card">
+          <div class="avatar" aria-hidden="true">HS</div>
+          <div class="t-name">Henrik Sørensen</div>
+          <div class="t-role">Backend Engineer</div>
+          <div class="t-dept">Engineering — Backend</div>
+        </article>
+        <article class="team-card">
+          <div class="avatar" aria-hidden="true">EP</div>
+          <div class="t-name">Elena Popescu</div>
+          <div class="t-role">Database Engineer</div>
+          <div class="t-dept">Engineering — Backend</div>
+        </article>
+        <article class="team-card">
+          <div class="avatar" aria-hidden="true">AN</div>
+          <div class="t-name">Akira Nakamura</div>
+          <div class="t-role">Database Engineer</div>
+          <div class="t-dept">Engineering — Backend</div>
+        </article>
+        <article class="team-card">
+          <div class="avatar" aria-hidden="true">RM</div>
+          <div class="t-name">Rafael Moreno</div>
+          <div class="t-role">Mobile Engineer</div>
+          <div class="t-dept">Engineering — Mobile</div>
+        </article>
+        <article class="team-card">
+          <div class="avatar" aria-hidden="true">CE</div>
+          <div class="t-name">Chioma Eze</div>
+          <div class="t-role">Mobile Engineer</div>
+          <div class="t-dept">Engineering — Mobile</div>
+        </article>
+        <article class="team-card">
+          <div class="avatar" aria-hidden="true">HS</div>
+          <div class="t-name">Hiroshi Sato</div>
+          <div class="t-role">Mobile Engineer</div>
+          <div class="t-dept">Engineering — Mobile</div>
+        </article>
+        <article class="team-card">
+          <div class="avatar" aria-hidden="true">IO</div>
+          <div class="t-name">Ingrid Olsen</div>
+          <div class="t-role">Mobile Engineer</div>
+          <div class="t-dept">Engineering — Mobile</div>
+        </article>
+        <article class="team-card">
+          <div class="avatar" aria-hidden="true">PK</div>
+          <div class="t-name">Pavel Kowalski</div>
+          <div class="t-role">DevOps Engineer</div>
+          <div class="t-dept">Operations</div>
+        </article>
+        <article class="team-card">
+          <div class="avatar" aria-hidden="true">AN</div>
+          <div class="t-name">Adaeze Nwosu</div>
+          <div class="t-role">DevOps Engineer</div>
+          <div class="t-dept">Operations</div>
+        </article>
+        <article class="team-card">
+          <div class="avatar" aria-hidden="true">GR</div>
+          <div class="t-name">Giulia Rossi</div>
+          <div class="t-role">DevOps Engineer</div>
+          <div class="t-dept">Operations</div>
+        </article>
+        <article class="team-card">
+          <div class="avatar" aria-hidden="true">TA</div>
+          <div class="t-name">Tariq al-Rashid</div>
+          <div class="t-role">Site Reliability Engineer</div>
+          <div class="t-dept">Operations</div>
+        </article>
+        <article class="team-card">
+          <div class="avatar" aria-hidden="true">AM</div>
+          <div class="t-name">Anika Müller</div>
+          <div class="t-role">QA Engineer</div>
+          <div class="t-dept">Quality</div>
+        </article>
+        <article class="team-card">
+          <div class="avatar" aria-hidden="true">JP</div>
+          <div class="t-name">Joon-ho Park</div>
+          <div class="t-role">QA Engineer</div>
+          <div class="t-dept">Quality</div>
+        </article>
+        <article class="team-card">
+          <div class="avatar" aria-hidden="true">BA</div>
+          <div class="t-name">Beatriz Almeida</div>
+          <div class="t-role">QA Engineer</div>
+          <div class="t-dept">Quality</div>
+        </article>
+        <article class="team-card">
+          <div class="avatar" aria-hidden="true">SW</div>
+          <div class="t-name">Stephan Weber</div>
+          <div class="t-role">Code Reviewer</div>
+          <div class="t-dept">Quality</div>
+        </article>
+        <article class="team-card">
+          <div class="avatar" aria-hidden="true">NK</div>
+          <div class="t-name">Nadia Karimi</div>
+          <div class="t-role">Security Officer</div>
+          <div class="t-dept">Security &amp; Compliance</div>
+        </article>
+        <article class="team-card">
+          <div class="avatar" aria-hidden="true">GL</div>
+          <div class="t-name">Greta Lundqvist</div>
+          <div class="t-role">Privacy Officer</div>
+          <div class="t-dept">Security &amp; Compliance</div>
+        </article>
+        <article class="team-card">
+          <div class="avatar" aria-hidden="true">HK</div>
+          <div class="t-name">Hanna Kowalska</div>
+          <div class="t-role">Compliance Auditor</div>
+          <div class="t-dept">Security &amp; Compliance</div>
+        </article>
+        <article class="team-card">
+          <div class="avatar" aria-hidden="true">CR</div>
+          <div class="t-name">Camila Reyes</div>
+          <div class="t-role">Account Manager</div>
+          <div class="t-dept">Customer-facing</div>
+        </article>
+        <article class="team-card">
+          <div class="avatar" aria-hidden="true">LO</div>
+          <div class="t-name">Liam O&#x27;Connor</div>
+          <div class="t-role">Account Manager</div>
+          <div class="t-dept">Customer-facing</div>
+        </article>
+        <article class="team-card">
+          <div class="avatar" aria-hidden="true">SI</div>
+          <div class="t-name">Sanjay Iyer</div>
+          <div class="t-role">Support Engineer</div>
+          <div class="t-dept">Customer-facing</div>
+        </article>
+        <article class="team-card">
+          <div class="avatar" aria-hidden="true">MH</div>
+          <div class="t-name">Margit Halvorsen</div>
+          <div class="t-role">Technical Writer</div>
+          <div class="t-dept">Documentation</div>
+        </article>
+        <article class="team-card">
+          <div class="avatar" aria-hidden="true">HW</div>
+          <div class="t-name">Hanna Wickström</div>
+          <div class="t-role">Release Manager</div>
+          <div class="t-dept">Release Operations</div>
+        </article>
+        <article class="team-card">
+          <div class="avatar" aria-hidden="true">IQ</div>
+          <div class="t-name">Imran Qureshi</div>
+          <div class="t-role">Archivist</div>
+          <div class="t-dept">Records</div>
+        </article>
+        <article class="team-card">
+          <div class="avatar" aria-hidden="true">DV</div>
+          <div class="t-name">Dmitri Volkov</div>
+          <div class="t-role">Devil&#x27;s Advocate</div>
+          <div class="t-dept">Quality (special)</div>
+        </article>
+    </div>
+    <p class="mono muted" style="margin-top:1.5rem; font-size:0.75rem;">
+      ROSTER LAST UPDATED Day 1, 09:00 · ALL 50 PROFILES LOADED
+    </p>
+  </div>
+</section>
+
+<section id="work" class="std" aria-labelledby="work-title">
+  <div class="container">
+    <header class="sec-head">
+      <div>
+        <p class="sec-tag mono">03 — WORK</p>
+        <h2 id="work-title" class="sec-title">Recent case studies</h2>
+      </div>
+      <p class="sec-lede">
+        Six most recent shipped tickets, summarized. Each links to the full audit trail in <code class="mono">archive/</code> —
+        what was asked, who built it, which gates ran, and the SHA-256 of every file.
+      </p>
+    </header>
+    <div class="grid-cases">
+      <article class="case case-empty">
+        <h3 class="case-title">No releases yet</h3>
+        <p class="case-summary">The firm is freshly bootstrapped. Drop a brief into <code>inbox/</code> to start the first ticket. Once it ships, it appears here with its full audit trail.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="standards" class="std-inverted" aria-labelledby="standards-title">
+  <div class="container" style="padding-block: var(--space-section);">
+    <header class="sec-head">
+      <div>
+        <p class="sec-tag mono">04 — STANDARDS</p>
+        <h2 id="standards-title" class="sec-title">How we work</h2>
+      </div>
+      <div class="std-block">
+        <div>
+          <p class="lbl mono">CODING</p>
+          <p>TypeScript and Python by default. Conventional commits. 80% test coverage minimum on changed code. No flaky tests in main. Lint clean or no merge.</p>
+        </div>
+        <div>
+          <p class="lbl mono">UX</p>
+          <p>WCAG 2.2 AA minimum. LCP &lt; 2.5s, INP &lt; 200ms, CLS &lt; 0.1 on mid-tier mobile. Mobile-first, every state designed (loading, empty, error).</p>
+        </div>
+        <div>
+          <p class="lbl mono">SECURITY</p>
+          <p>No secrets in source. Inputs validated at trust boundaries. Auth required on every non-public endpoint. Rate limiting on auth. CSP everywhere.</p>
+        </div>
+        <div>
+          <p class="lbl mono">PRIVACY (DSGVO)</p>
+          <p>Data minimization by default. Explicit consent where required. 30-day default log retention. Right to erasure technically achievable.</p>
+        </div>
+        <div>
+          <p class="lbl mono">RELEASE</p>
+          <p>Three stages — sandbox, staging, production. Production is immutable, hash-pinned, and verified on every session start. New work = new version. Never modified.</p>
+        </div>
+      </div>
+    </header>
+  </div>
+</section>
+
+<section id="contact" class="contact" aria-labelledby="contact-title">
+  <div class="container">
+    <p class="sec-tag mono">05 — CONTACT</p>
+    <h2 id="contact-title" class="contact-title">Have a brief? Drop it in <span class="inbox-chip mono">inbox/</span></h2>
+    <p>Text, files, data, voice transcripts — anything works. The firm scans the inbox every session and starts a ticket. You'll get an email if we have questions.</p>
+    <a class="email" href="mailto:belkis.aslani@gmail.com">belkis.aslani@gmail.com</a>
+    <span class="client-line mono">CLIENT · Belkis Aslani</span>
+  </div>
+</section>
+
+</main>
+
+<footer class="site" role="contentinfo">
+  <div class="container">
+    <div>
+      <div class="footer-name">Nordlicht Digital</div>
+      <div>Est. 2026 · We build software the way it should be built.</div>
+    </div>
+    <div class="footer-right">
+      <div>FIRM DAY 1 · SPRINT sprint-001 · DAY 1/10</div>
+      <div>AUDIT CHAIN: ✓ VERIFIED (22 entries) · DRIFT ALERTS: 0</div>
+      <div>PAGE GENERATED 2026-05-13T09:00:00Z</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
