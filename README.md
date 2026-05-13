@@ -21,9 +21,9 @@
 | **Current sprint** | sprint-001 · Day 1/10 |
 | **Firm day** | 1 |
 | **Production releases** | 0 · latest **—** |
-| **Last gate decision** | PASS (RELEASE) |
+| **Last gate decision** | — |
 | **Open drift alerts** | 0 |
-| **Audit chain** | ✓ Verified (22 entries) |
+| **Audit chain** | ✓ Verified (1 entry) |
 | **Page generated** | 2026-05-13T09:00:00Z |
 
 ---
@@ -157,5 +157,5 @@ The firm scans the inbox on every Claude Code session. When content arrives, it 
 
 <sub>
 Nordlicht Digital · Est. 2026 · Internal language: English · Customer language: de<br />
-Operating system version: 2.0.0 · Page generated 2026-05-13T09:00:00Z · Audit chain ✓ Verified (22 entries) · Drift alerts: 0
+Operating system version: 2.0.0 · Page generated 2026-05-13T09:00:00Z · Audit chain ✓ Verified (1 entry) · Drift alerts: 0
 </sub>

@@ -1,8 +1,0 @@
-{"gate": "A1-QA", "real": "2026-05-13T10:30:00Z", "reviewer": {"id": "037", "name": "Anika M\u00fcller", "role": "qa-engineer"}, "sim": "Day 1, 10:30", "ticket": "TCK-20260513-0001", "verdict": "PASS"}
-{"gate": "A2-Security", "real": "2026-05-13T10:35:00Z", "reviewer": {"id": "041", "name": "Nadia Karimi", "role": "security-officer"}, "sim": "Day 1, 10:35", "ticket": "TCK-20260513-0001", "verdict": "PASS"}
-{"gate": "A3-Quality", "real": "2026-05-13T10:40:00Z", "reviewer": {"id": "002", "name": "Marcus Chen", "role": "cto"}, "sim": "Day 1, 10:40", "ticket": "TCK-20260513-0001", "verdict": "PASS"}
-{"gate": "B1-Regression", "real": "2026-05-13T11:15:00Z", "reviewer": {"id": "037", "name": "Anika M\u00fcller", "role": "qa-engineer"}, "sim": "Day 1, 11:15", "ticket": "TCK-20260513-0001", "verdict": "PASS"}
-{"gate": "B2-Privacy", "real": "2026-05-13T11:20:00Z", "reviewer": {"id": "042", "name": "Greta Lundqvist", "role": "privacy-officer"}, "sim": "Day 1, 11:20", "ticket": "TCK-20260513-0001", "verdict": "PASS"}
-{"gate": "B3-Compliance", "real": "2026-05-13T11:25:00Z", "reviewer": {"id": "043", "name": "Hanna Kowalska", "role": "compliance-auditor"}, "sim": "Day 1, 11:25", "ticket": "TCK-20260513-0001", "verdict": "PASS"}
-{"gate": "B4-UX-Acceptance", "real": "2026-05-13T11:30:00Z", "reviewer": {"id": "007", "name": "Sofia Conti", "role": "ux-designer"}, "sim": "Day 1, 11:30", "ticket": "TCK-20260513-0001", "verdict": "PASS"}
-{"gate": "RELEASE", "real": "2026-05-13T11:45:00Z", "reviewer": {"id": "048", "name": "Hanna Wickstr\u00f6m", "role": "release-manager"}, "sim": "Day 1, 11:45", "ticket": "TCK-20260513-0001", "verdict": "PASS", "version": "0.1.0"}
